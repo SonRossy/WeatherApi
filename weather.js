@@ -16,14 +16,15 @@ $( document ).ready(() => {
                 $("#weather-main").text(data.weather[0].main);
                 $("#weather-desc").text(data.weather[0].description);
                 $("#wind-speed").text(data.wind.speed);
-                $("#wind-degree").text(data.wind.gust);
+                $("#wind-degree").text(data.wind.deg);
                 $("#temp-current").text(data.main.temp);
                 $("#temp-min").text(data.main.temp_min);
                 $("#temp-max").text(data.main.temp_max);
                 $("#humidity").text(data.main.humidity);
             },
-            error:(error)=>{
-                alert(error);
+            error:(xhr, status,error)=>{
+                let errorMessage = xhr.status + ': ' + xhr.repsonseText
+                alert('Error : ' + errorMessage);
             }
         });
     }
